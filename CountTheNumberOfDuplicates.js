@@ -14,9 +14,7 @@ const duplicateCount = text => {
   let charArray = [...text.toLowerCase()]
   let count = 0
   let recorder = {}
-  console.log(charArray)
   charArray.map(char => {
-    console.log(recorder[char] )
     if (recorder[char] === undefined) {
       recorder[char] = false
     } else {
@@ -26,7 +24,6 @@ const duplicateCount = text => {
       }
     }
   })
-  console.log(count)
   return count
 }
 
