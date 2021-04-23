@@ -41,4 +41,15 @@ const topThreeWords = text => {
   else return []
 }
 
-console.log(topThreeWords('//wont won\'t won\'t')) //[ "won't", 'wont' ]
+const improvedTopThreeWords = text => {
+  let counters = {}
+
+  text.toLowerCase().replace(/([A-Za-z][A-Za-z']*)/g, match => {
+    let count = counters[match] || 0
+    counters[match] = ++count
+  })
+
+  return Object.keys(counters).sort((a, b) => counters[b] - counters[a]).slice(0, 3)
+}
+
+console.log(improvedTopThreeWords('e e e e DDD ddd DdD: ddd ddd aa aA Aa, bb cc cC e e e')) //[ "won't", 'wont' ]
